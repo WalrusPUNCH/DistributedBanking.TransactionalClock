@@ -2,6 +2,18 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistributedBanking.TransactionalClock.Host", "DistributedBanking.TransactionalClock.Host\DistributedBanking.TransactionalClock.Host.csproj", "{16B83901-1B9B-480C-8863-7B1358C6E933}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Submodules", "Submodules", "{AD07887F-4A26-4D1B-A0E9-CAD2A00CB7F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Kafka", "DistributedBanking.Shared\Shared.Kafka\Shared.Kafka.csproj", "{30733705-135A-472C-BB0D-ECA1CFE542A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Data", "DistributedBanking.Shared\Shared.Data\Shared.Data.csproj", "{E2F9B9AF-DA7A-43F1-9D41-E854D8A1C77B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Messaging", "DistributedBanking.Shared\Shared.Messaging\Shared.Messaging.csproj", "{1A318208-C363-44F9-9AB4-86BBF8ED898B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistributedBanking.TransactionalClock.Domain", "DistributedBanking.TransactionalClock.Domain\DistributedBanking.TransactionalClock.Domain.csproj", "{A74D30D9-EC16-4D32-A3BB-6F647EF4B21B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistributedBanking.TransactionalClock.Data", "DistributedBanking.TransactionalClock.Data\DistributedBanking.TransactionalClock.Data.csproj", "{26BBBD3E-A818-4885-A168-3F7C7FE2DC3B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +24,30 @@ Global
 		{16B83901-1B9B-480C-8863-7B1358C6E933}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16B83901-1B9B-480C-8863-7B1358C6E933}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16B83901-1B9B-480C-8863-7B1358C6E933}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30733705-135A-472C-BB0D-ECA1CFE542A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30733705-135A-472C-BB0D-ECA1CFE542A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30733705-135A-472C-BB0D-ECA1CFE542A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30733705-135A-472C-BB0D-ECA1CFE542A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2F9B9AF-DA7A-43F1-9D41-E854D8A1C77B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2F9B9AF-DA7A-43F1-9D41-E854D8A1C77B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2F9B9AF-DA7A-43F1-9D41-E854D8A1C77B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2F9B9AF-DA7A-43F1-9D41-E854D8A1C77B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A318208-C363-44F9-9AB4-86BBF8ED898B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A318208-C363-44F9-9AB4-86BBF8ED898B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A318208-C363-44F9-9AB4-86BBF8ED898B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A318208-C363-44F9-9AB4-86BBF8ED898B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A74D30D9-EC16-4D32-A3BB-6F647EF4B21B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A74D30D9-EC16-4D32-A3BB-6F647EF4B21B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A74D30D9-EC16-4D32-A3BB-6F647EF4B21B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A74D30D9-EC16-4D32-A3BB-6F647EF4B21B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26BBBD3E-A818-4885-A168-3F7C7FE2DC3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26BBBD3E-A818-4885-A168-3F7C7FE2DC3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26BBBD3E-A818-4885-A168-3F7C7FE2DC3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26BBBD3E-A818-4885-A168-3F7C7FE2DC3B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{30733705-135A-472C-BB0D-ECA1CFE542A5} = {AD07887F-4A26-4D1B-A0E9-CAD2A00CB7F6}
+		{E2F9B9AF-DA7A-43F1-9D41-E854D8A1C77B} = {AD07887F-4A26-4D1B-A0E9-CAD2A00CB7F6}
+		{1A318208-C363-44F9-9AB4-86BBF8ED898B} = {AD07887F-4A26-4D1B-A0E9-CAD2A00CB7F6}
 	EndGlobalSection
 EndGlobal
