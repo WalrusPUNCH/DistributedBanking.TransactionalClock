@@ -1,0 +1,6 @@
+﻿services:
+  transactionalclock.host:
+    image: transactionalclock.host
+    build:
+      context: .
+      dockerfile: TransactionalClock.Host/Dockerfile
