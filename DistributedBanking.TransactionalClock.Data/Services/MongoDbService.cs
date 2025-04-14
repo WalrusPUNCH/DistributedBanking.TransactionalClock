@@ -8,9 +8,9 @@ public class MongoDbService : IMongoDbService
 {
     private readonly IMongoClient _client;
 
-    public MongoDbService(string connectionString)
+    public MongoDbService(IMongoClient client)
     {
-        _client = new MongoClient(connectionString);
+        _client = client;
     }
 
     public async Task AddAsync(string databaseName, string collectionName, object document)

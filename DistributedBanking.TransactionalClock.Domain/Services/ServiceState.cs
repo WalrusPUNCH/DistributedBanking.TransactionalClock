@@ -1,15 +1,16 @@
-using System.Reactive.Subjects;
+using DistributedBanking.TransactionalClock.Domain.Models;
 using DistributedBanking.TransactionalClock.Domain.Services.Abstraction;
+using System.Reactive.Subjects;
 
 namespace DistributedBanking.TransactionalClock.Domain.Services;
 
 public class ServiceState : IServiceState
 {
     public Dictionary<int, Dictionary<string, Dictionary<string, Dictionary<string, List<Transaction>>>>> Transactions { get; } = new();
-    
-    public readonly Subject<Transaction> TransactionStream = new();
 
-    public readonly SemaphoreSlim SyncLock = new(1, 1);
+    public Subject<Transaction> TransactionStream { get; } = new();
+
+    public SemaphoreSlim SyncLock { get; } = new(1, 1);
 
     public void OrderByPriorities()
     {
