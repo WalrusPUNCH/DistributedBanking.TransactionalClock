@@ -1,20 +1,20 @@
-using DistributedBanking.TransactionalClock.Domain.Models;
+using Shared.Data.Entities;
+
+namespace DistributedBanking.TransactionalClock.Domain.Models;
 
 public class ResultingTransaction : TransactionBase
 {
-    private readonly string _id;
-    private readonly string _database;
-    private readonly string _collection;
+    public string Id { get; init; }
 
-    public ResultingTransaction(string id, Dictionary<string, object>? data, TransactionType operation, string database, string collection)
+    public string Database { get; init; }
+
+    public string Collection { get; init; }
+
+    protected ResultingTransaction(string id, Dictionary<string, object?> data, CommandType operation, string database, string collection)
         : base(data, operation)
     {
-        _id = id;
-        _database = database;
-        _collection = collection;
+        Id = id;
+        Database = database;
+        Collection = collection;
     }
-
-    public string Id => _id;
-    public string Database => _database;
-    public string Collection => _collection;
 }

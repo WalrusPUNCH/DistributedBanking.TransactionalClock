@@ -5,7 +5,7 @@ var configuration = builder.Configuration;
 
 builder.Services
     .AddServices(configuration)
-    .AddBackgroundListeners()
+    .AddBackgroundListeners(configuration)
     .ConfigureOptions(configuration);
 
 builder.Host.UseSerilogAppLogging();

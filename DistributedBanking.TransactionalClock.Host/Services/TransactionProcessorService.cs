@@ -1,16 +1,20 @@
-using System.Reactive.Linq;
 using DistributedBanking.TransactionalClock.Data.Services.Abstraction;
-using DistributedBanking.TransactionalClock.Domain.Services;
+using DistributedBanking.TransactionalClock.Domain.Models;
+using DistributedBanking.TransactionalClock.Domain.Services.Abstraction;
 using DistributedBanking.TransactionalClock.Domain.Utils;
+using Shared.Data.Entities;
+using System.Reactive.Linq;
+
+namespace DistributedBanking.TransactionalClock.Host.Services;
 
 public class TransactionProcessorService : BackgroundService
 {
-    private readonly ServiceState _state;
+    private readonly IServiceState _state;
     private readonly IMongoDbService _mongoDbService;
     private readonly ILogger<TransactionProcessorService> _logger;
 
     public TransactionProcessorService(
-        ServiceState state,
+        IServiceState state,
         IMongoDbService mongoDbService,
         ILogger<TransactionProcessorService> logger)
     {
@@ -88,7 +92,7 @@ public class TransactionProcessorService : BackgroundService
                         if (transactions.Count == 0)
                             continue;
 
-                        if (transactions.Any(t => t.Operation == TransactionType.DELETE))
+                        if (transactions.Any(t => t.Operation == CommandType.Delete))
                         {
                             await _mongoDbService.DeleteAsync(database, collection, id);
                             //_state.ResultingTransactions.Enqueue(result);
@@ -96,7 +100,7 @@ public class TransactionProcessorService : BackgroundService
                             continue;
                         }
 
-                        var creates = transactions.Where(t => t.Operation == TransactionType.CREATE).ToList();
+                        var creates = transactions.Where(t => t.Operation == CommandType.Create).ToList();
                         if (creates.Any())
                         {
                             var lastCreate = creates.Last();
@@ -105,7 +109,7 @@ public class TransactionProcessorService : BackgroundService
                             //_state.ResultingTransactions.Enqueue(result);
                         }
 
-                        var updates = transactions.Where(t => t.Operation == TransactionType.UPDATE).ToList();
+                        var updates = transactions.Where(t => t.Operation == CommandType.Update).ToList();
                         if (updates.Count == 0)
                         {
                             ids[id] = [];

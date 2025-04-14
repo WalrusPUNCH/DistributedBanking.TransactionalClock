@@ -14,13 +14,7 @@
         <PackageReference Include="Serilog.Enrichers.Thread" Version="3.1.0" />
         <PackageReference Include="Serilog.Exceptions" Version="8.4.0" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Content Include="..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
-    </ItemGroup>
-
+    
     <ItemGroup>
       <ProjectReference Include="..\DistributedBanking.Shared\Shared.Kafka\Shared.Kafka.csproj" />
       <ProjectReference Include="..\DistributedBanking.Shared\Shared.Messaging\Shared.Messaging.csproj" />
