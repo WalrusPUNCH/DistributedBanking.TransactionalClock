@@ -8,22 +8,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.3"/>
         <PackageReference Include="Serilog.AspNetCore" Version="8.0.0" />
         <PackageReference Include="Serilog.Enrichers.Environment" Version="2.3.0" />
         <PackageReference Include="Serilog.Enrichers.Thread" Version="3.1.0" />
         <PackageReference Include="Serilog.Exceptions" Version="8.4.0" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Content Include="..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
-    </ItemGroup>
-
+    
     <ItemGroup>
       <ProjectReference Include="..\DistributedBanking.Shared\Shared.Kafka\Shared.Kafka.csproj" />
-      <ProjectReference Include="..\DistributedBanking.Shared\Shared.Messaging\Shared.Messaging.csproj" />
       <ProjectReference Include="..\DistributedBanking.TransactionalClock.Data\DistributedBanking.TransactionalClock.Data.csproj" />
       <ProjectReference Include="..\DistributedBanking.TransactionalClock.Domain\DistributedBanking.TransactionalClock.Domain.csproj" />
     </ItemGroup>
