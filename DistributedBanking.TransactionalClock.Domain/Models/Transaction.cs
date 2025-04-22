@@ -2,21 +2,25 @@ using Shared.Data.Entities;
 
 namespace DistributedBanking.TransactionalClock.Domain.Models;
 
-public class Transaction : ResultingTransaction
+public class Transaction : TransactionBase
 {
+    public string Id { get; init; }
+
+    public string Collection { get; init; }
+    
     public DateTime CreatedAt { get; init;  }
 
     public int Priority { get; init; }
     
     public Transaction(
         string id,
-        Dictionary<string, object?> data,
+        object data,
+        Type type,
         DateTime createdAt,
         CommandType operation,
-        string database,
         string collection,
         int priority)
-            : base(id, data, operation, database, collection)
+            : base(data, type, operation)
     {
         if (operation == CommandType.Update && createdAt == default)
             throw new Exception($"created_at must be present for {operation}");

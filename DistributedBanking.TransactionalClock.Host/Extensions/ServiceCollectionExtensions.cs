@@ -16,7 +16,7 @@ public static class ServiceCollectionExtensions
         var databaseOptions = configuration.GetSection(nameof(DatabaseOptions)).Get<DatabaseOptions>();
         ArgumentNullException.ThrowIfNull(databaseOptions);
         
-        services.AddMongoDatabase(databaseOptions.ConnectionString);
+        services.AddMongoDatabase(databaseOptions.ConnectionStrings, databaseOptions.DatabaseName);
         services.AddDomainServices();
         
         return services;

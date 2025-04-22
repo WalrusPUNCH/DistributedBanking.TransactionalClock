@@ -24,9 +24,9 @@ public class CommandsListener : BaseListener<string, Command>
         var transaction = new Transaction(
             message.Message.Id,
             message.Message.Payload,
+            message.Message.PayloadType,
             message.Message.CreatedAt,
             message.Message.Operation,
-            message.Message.Database,
             message.Message.Collection,
             message.Message.Priority);
         
