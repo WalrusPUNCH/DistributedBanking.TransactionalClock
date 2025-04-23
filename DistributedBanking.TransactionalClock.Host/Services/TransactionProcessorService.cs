@@ -29,7 +29,6 @@ public class TransactionProcessorService : BackgroundService
         _logger = logger;
     }
 
-
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         _logger.LogInformation("Starting transaction processor service with Rx...");
@@ -40,7 +39,7 @@ public class TransactionProcessorService : BackgroundService
                 {
                     try
                     {
-                        await _state.SyncLock.WaitAsync(ct);
+                        await _state.SyncLock.WaitAsync();
                         // try
                         // {
                         /*if (!_state.Transactions.TryGetValue(t.Priority, out var collections))
@@ -95,19 +94,23 @@ public class TransactionProcessorService : BackgroundService
                         _state.SyncLock.Release();
                     }
                 }))
-                .Concat()
+                .Merge(1)
                 .Subscribe();
 
         // Periodic merge logic
-        _mergeLoop = Observable.Interval(TimeSpan.FromMilliseconds(10))
-            .Select(_ => Observable.FromAsync(DoMerge))
-            .Concat()
+      _mergeLoop = Observable.Interval(TimeSpan.FromMilliseconds(10))
+           // .SelectMany(_ => Observable.FromAsync(DoMerge))
+           .Select(_ => Observable.FromAsync(DoMerge))
+            .Merge(1)
+            //.Concat()
             .SubscribeOn(TaskPoolScheduler.Default)
             .Subscribe();
     }
 
     private async Task DoMerge()
     {
+       // _logger.LogInformation("DoMerge triggered at {Time}", DateTime.UtcNow.TimeOfDay);
+
        // 1try
        // 1{ 
            // 1 await _state.SyncLock.WaitAsync();

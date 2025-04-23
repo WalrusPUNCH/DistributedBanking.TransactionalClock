@@ -8,7 +8,7 @@ public class Transaction : TransactionBase
 
     public string Collection { get; init; }
     
-    public DateTime CreatedAt { get; init;  }
+    public DateTime CreatedAt { get; init; }
 
     public int Priority { get; init; }
     
@@ -25,6 +25,8 @@ public class Transaction : TransactionBase
         if (operation == CommandType.Update && createdAt == default)
             throw new Exception($"created_at must be present for {operation}");
 
+        Id = id;
+        Collection = collection;
         CreatedAt = createdAt;
         Priority = priority;
     }

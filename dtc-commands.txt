@@ -1,0 +1,3 @@
+docker build -t distributed-banking/distributed-transactional-clock:1.0 .
+
+docker run -d --rm --name distributed-banking-distributed-transactional-clock distributed-banking/distributed-transactional-clock:1.0
